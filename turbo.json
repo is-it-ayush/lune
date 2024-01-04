@@ -20,7 +20,7 @@
       "outputMode": "errors-only"
     },
     "lint": {
-      "dependsOn": ["^topo", "@repo/compiled#build"],
+      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/.eslintcache"],
       "outputMode": "errors-only"
     },
