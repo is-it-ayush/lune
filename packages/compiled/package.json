@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@repo/compiled",
+  "name": "@lune/compiled",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -25,8 +25,8 @@
     "clean": "rm -rf node_modules dist .turbo"
   },
   "devDependencies": {
-    "@repo/lint": "workspace:*",
-    "@repo/tsconfig": "workspace:*",
+    "@lune/lint": "workspace:*",
+    "@lune/tsconfig": "workspace:*",
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",

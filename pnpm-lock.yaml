@@ -25,10 +25,10 @@ importers:
 
   apps/web:
     dependencies:
-      '@repo/compiled':
+      '@lune/compiled':
         specifier: workspace:*
         version: link:../../packages/compiled
-      '@repo/just-in-time':
+      '@lune/just-in-time':
         specifier: workspace:*
         version: link:../../packages/just-in-time
       next:
@@ -41,15 +41,15 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@lune/lint':
+        specifier: link:../../tooling/eslint-config
+        version: link:../../tooling/eslint-config
+      '@lune/tsconfig':
+        specifier: link:../../tooling/typescript-config
+        version: link:../../tooling/typescript-config
       '@next/eslint-plugin-next':
         specifier: ^14.0.4
         version: 14.0.4
-      '@repo/lint':
-        specifier: link:../../tooling/eslint-config
-        version: link:../../tooling/eslint-config
-      '@repo/tsconfig':
-        specifier: link:../../tooling/typescript-config
-        version: link:../../tooling/typescript-config
       '@types/node':
         specifier: ^20.10.6
         version: 20.10.6
@@ -77,11 +77,11 @@ importers:
 
   packages/compiled:
     devDependencies:
-      '@repo/lint':
-        specifier: link:../../tooling/eslint-config
+      '@lune/lint':
+        specifier: workspace:*
         version: link:../../tooling/eslint-config
-      '@repo/tsconfig':
-        specifier: link:../../tooling/typescript-config
+      '@lune/tsconfig':
+        specifier: workspace:*
         version: link:../../tooling/typescript-config
       '@types/node':
         specifier: ^20.10.6
@@ -107,11 +107,11 @@ importers:
 
   packages/just-in-time:
     devDependencies:
-      '@repo/lint':
-        specifier: link:../../tooling/eslint-config
+      '@lune/lint':
+        specifier: workspace:*
         version: link:../../tooling/eslint-config
-      '@repo/tsconfig':
-        specifier: link:../../tooling/typescript-config
+      '@lune/tsconfig':
+        specifier: workspace:*
         version: link:../../tooling/typescript-config
       '@types/node':
         specifier: ^20.10.6
