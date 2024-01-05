@@ -22,6 +22,9 @@
     "packages/*",
     "tooling/*"
   ],
+  "overrides": {
+    "react-refresh": "~0.14.0"
+  },
   "engines": {
     "node": ">18"
   },
