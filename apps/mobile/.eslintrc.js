@@ -1,5 +1,5 @@
 module.exports = {
-  extends: [require.resolve("@lune/lint/next")],
+  extends: [require.resolve("@lune/lint/native")],
   parserOptions: {
     project: `${__dirname}/tsconfig.json`,
   },

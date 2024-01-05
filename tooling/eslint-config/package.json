@@ -8,13 +8,14 @@
     "clean": "rm -rf node_modules"
   },
   "devDependencies": {
+    "@lune/tsconfig": "workspace:*",
     "@next/eslint-plugin-next": "^14.0.4",
-    "@repo/tsconfig": "workspace:^",
     "@types/node": "20.10.6",
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.17.0",
     "@vercel/style-guide": "^5.1.0",
     "eslint": "8.56.0",
-    "eslint-config-turbo": "^1.11.2"
+    "eslint-config-turbo": "^1.11.2",
+    "eslint-config-universe": "^12.0.0"
   }
 }
