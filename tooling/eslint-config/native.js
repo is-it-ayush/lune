@@ -12,7 +12,7 @@ module.exports = {
     React: true,
     JSX: true,
   },
-  ignorePatterns: ["node_modules/", "dist/", ".eslintrc.js"],
+  ignorePatterns: ["node_modules/", "dist/", ".eslintrc.js", "/*.config.js"],
   root: true,
   ...rules
 };

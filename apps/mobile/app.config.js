@@ -16,18 +16,41 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/** @type {import('tailwindcss').Config} */
+/** @type {import('expo/config').ExpoConfig} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}"
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        poppins: ["PoppinsRegular"],
-      }
-    },
+  name: "lune",
+  slug: "lune",
+  scheme: "lune",
+  version: "0.0.1",
+  orientation: "portrait",
+  icon: "./assets/icon.png",
+  userInterfaceStyle: "light",
+  splash: {
+    image: "./assets/splash.png",
+    resizeMode: "contain",
+    backgroundColor: "#ffffff"
   },
-  plugins: [],
+  experiments: {
+    tsconfigPaths: true,
+    typedRoutes: true
+  },
+  assetBundlePatterns: [
+    "**/*"
+  ],
+  ios: {
+    supportsTablet: true
+  },
+  android: {
+    adaptiveIcon: {
+      foregroundImage: "./assets/adaptive-icon.png",
+      backgroundColor: "#ffffff"
+    }
+  },
+  web: {
+    favicon: "./assets/favicon.png",
+    bundler: "metro"
+  },
+  plugins: [
+    "expo-router"
+  ]
 }
-
