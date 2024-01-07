@@ -24,7 +24,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ["PoppinsRegular"],
+        "poppins-100": ["PoppinsThin"],
+        "poppins-200": ["PoppinsExtraLight"],
+        "poppins-300": ["PoppinsLight"],
+        "poppins-400": ["PoppinsRegular"],
+        "poppins-500": ["PoppinsMedium"],
+        "poppins-600": ["PoppinsSemiBold"],
+        "poppins-700": ["PoppinsBold"],
+        "poppins-800": ["PoppinsExtraBold"],
+        "poppins-900": ["PoppinsBlack"],
       }
     },
   },
