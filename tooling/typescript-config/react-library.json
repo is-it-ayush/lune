@@ -4,10 +4,17 @@
   "extends": "./base.json",
   "compilerOptions": {
     "incremental": true,
-    "lib": ["ES2015", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "target": "ES6",
     "jsx": "react-jsx",
-    "resolveJsonModule": true
-  }
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "resolveJsonModule": true,
+    "target": "ES6"
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

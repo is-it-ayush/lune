@@ -17,13 +17,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Image } from "react-native";
+import { View, Image } from "react-native";
 import { StyledText } from "~/components/StyledText";
 
 export default function App() {
   return (
     <View className="flex-1 justify-center items-center">
-      <Image width={300} height={400} source={{ uri: "https://media.tenor.com/i829SwWp6pAAAAAM/cat-angry.gif" }} />
+      <Image
+        width={300}
+        height={400}
+        source={{
+          uri: "https://media.tenor.com/i829SwWp6pAAAAAM/cat-angry.gif",
+        }}
+      />
       <StyledText className="text-amber-500">blyat :3</StyledText>
       <StatusBar style="auto" />
     </View>

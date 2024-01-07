@@ -22,30 +22,28 @@ const { getDefaultConfig } = require("expo/metro-config");
 const projectRoot = __dirname;
 const workspaceRoot = path.resolve(projectRoot, "../..");
 const monorepoPackages = Object.values({
-  '@lune/tsconfig': path.resolve(workspaceRoot, 'tooling/typescript-config'),
-  '@lune/lint': path.resolve(workspaceRoot, 'tooling/eslint-config'),
+  "@lune/tsconfig": path.resolve(workspaceRoot, "tooling/typescript-config"),
+  "@lune/lint": path.resolve(workspaceRoot, "tooling/eslint-config"),
 });
 
-console.log(`[metro] ProjectRoot: ${projectRoot} | WorkspaceRoot: ${workspaceRoot}`);
+console.log(
+  `[metro] ProjectRoot: ${projectRoot} | WorkspaceRoot: ${workspaceRoot}`,
+);
 console.log(`[metro] Watching:\n${monorepoPackages.join("\n")}`);
-
 
 /** @type {import('expo/metro-config').MetroConfig} */
 const config = getDefaultConfig(__dirname, {
   isCSSEnabled: true,
   // watch for source changes on external packages.
-  watchFolders: [
-    projectRoot,
-    ...monorepoPackages
-  ],
+  watchFolders: [projectRoot, ...monorepoPackages],
   resolver: {
     // strictly define where node_modules are and in what order they should be resolved.
     nodeModulesPaths: [
       path.resolve(projectRoot, "node_modules"),
-      path.resolve(workspaceRoot, "node_modules")
+      path.resolve(workspaceRoot, "node_modules"),
     ],
-    disableHierarchicalLookup: true
-  }
+    disableHierarchicalLookup: true,
+  },
 });
 
 module.exports = config;

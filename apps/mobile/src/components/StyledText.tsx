@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
-import { Text } from "react-native"
+import { Text } from "react-native";
 
-interface StyledTextProps extends React.ComponentProps<typeof Text> { }
+interface StyledTextProps extends React.ComponentProps<typeof Text> {}
 
 export const StyledText = (props: StyledTextProps) => {
   return (
@@ -9,4 +9,4 @@ export const StyledText = (props: StyledTextProps) => {
       {props.children}
     </Text>
   );
-}
+};

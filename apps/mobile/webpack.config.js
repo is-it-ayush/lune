@@ -18,13 +18,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 const createExpoWebpackConfigAsync = require("@expo/webpack-config");
 
-module.exports = async function(env, argv) {
-  const config = await createExpoWebpackConfigAsync({
-    ...env,
-    babel: {
-      dangerouslyAddModulePathsToTranspile: ["nativewind"],
-    }
-  }, argv);
+module.exports = async function (env, argv) {
+  const config = await createExpoWebpackConfigAsync(
+    {
+      ...env,
+      babel: {
+        dangerouslyAddModulePathsToTranspile: ["nativewind"],
+      },
+    },
+    argv,
+  );
 
   config.module.rules.push({
     test: /\.css$/i,

@@ -28,29 +28,25 @@ module.exports = {
   splash: {
     image: "./assets/splash.png",
     resizeMode: "contain",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
   },
   experiments: {
     tsconfigPaths: true,
-    typedRoutes: true
+    typedRoutes: true,
   },
-  assetBundlePatterns: [
-    "**/*"
-  ],
+  assetBundlePatterns: ["**/*"],
   ios: {
-    supportsTablet: true
+    supportsTablet: true,
   },
   android: {
     adaptiveIcon: {
       foregroundImage: "./assets/adaptive-icon.png",
-      backgroundColor: "#ffffff"
-    }
+      backgroundColor: "#ffffff",
+    },
   },
   web: {
     favicon: "./assets/favicon.png",
-    bundler: "metro"
+    bundler: "metro",
   },
-  plugins: [
-    "expo-router"
-  ]
-}
+  plugins: ["expo-router"],
+};
