@@ -1,0 +1,33 @@
+{
+  "name": "@lune/backend",
+  "version": "0.0.1",
+  "description": "a stupid fucking backend",
+  "exports": {
+    ".": "./bindings/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./bindings/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "dev": "cargo-watch -x 'run'",
+    "build": "cargo build",
+    "bindings": "cargo test && sh ./bindings.sh",
+    "format": "prettier . --check --cache --cache-location=\"node_modules/.cache/prettiercache\"",
+    "format:fix": "prettier . --write --cache --cache-location=\"node_modules/.cache/prettiercache\" --log-level=warn",
+    "lint": "eslint . --cache --cache-location \"node_modules/.cache/.eslintcache\" --max-warnings 0",
+    "lint:fix": "eslint . --fix --cache --cache-location \"node_modules/.cache/.eslintcache\" --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf node_modules .turbo target"
+  },
+  "dependencies": {
+    "@lune/lint": "workspace:*",
+    "@lune/tsconfig": "workspace:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

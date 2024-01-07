@@ -16,9 +16,12 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
+    "@lune/backend": "workspace:*",
     "clsx": "^2.1.0",
     "expo": "~49.0.15",
+    "expo-auth-session": "~5.0.2",
     "expo-constants": "~14.4.2",
+    "expo-crypto": "~12.4.1",
     "expo-font": "~11.4.0",
     "expo-linking": "~5.0.2",
     "expo-router": "^2.0.0",
