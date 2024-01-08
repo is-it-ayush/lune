@@ -36,9 +36,11 @@ module.exports = {
   },
   assetBundlePatterns: ["**/*"],
   ios: {
+    bundleIdentifier: "com.ayush.lune",
     supportsTablet: true,
   },
   android: {
+    package: "com.ayush.lune",
     adaptiveIcon: {
       foregroundImage: "./assets/adaptive-icon.png",
       backgroundColor: "#ffffff",
