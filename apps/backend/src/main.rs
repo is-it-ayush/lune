@@ -14,25 +14,40 @@
 /// You should have received a copy of the GNU Affero General Public License
 /// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 use anyhow::{anyhow, Result};
+use diesel::pg::PgConnection;
+use diesel::prelude::*;
 use dotenv::dotenv;
 use hyper::{Body, Request, Response, Server, StatusCode};
 use routerify::prelude::*;
 use routerify::{Middleware, RequestInfo, Router, RouterService};
+use std::env;
 use std::net::SocketAddr;
 use std::sync::{Arc, Mutex};
 use ulid::Ulid;
 
-#[derive(Debug)]
+use self::models::*;
+
+mod models;
+mod schema;
+
 pub struct RequestState {
     pub request_id: String,
+    pub db: PgConnection,
 }
 
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
+    // ensure database
     dotenv().ok();
+    let database_url = env::var("DATABASE_URL")
+        .map_err(|e| anyhow!("Could not load the database url from environment: {e}"))?;
+    let db_connection = PgConnection::establish(&database_url)
+        .map_err(|e| anyhow!("Could not establish database connection: {e}"))?;
+
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
     let state = RequestState {
         request_id: String::new(),
+        db: db_connection,
     };
     let router = Router::builder()
         .data(Arc::new(Mutex::new(state)))
@@ -88,9 +103,19 @@ async fn index_handler(req: Request<Body>) -> Result<Response<Body>, anyhow::Err
     let state = req
         .data::<Arc<Mutex<RequestState>>>()
         .ok_or(anyhow!("Could not access state."))?;
-    let lock = state
+    let mut lock = state
         .lock()
         .map_err(|e| anyhow!("Could not acquire a lock onto state: {e}"))?;
+
+    use self::schema::users::dsl::*;
+
+    let results = users
+        .limit(5)
+        .select(User::as_select())
+        .load(&mut lock.db)?;
+
+    dbg!(&results);
+
     Ok(Response::new(Body::from(format!(
         "Hi {}, Wubba Lubba Dub Dub!",
         lock.request_id

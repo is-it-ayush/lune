@@ -4,6 +4,10 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --filter=!landing",
+    "db:push": "turbo db:push",
+    "db:pop": "turbo db:pop",
+    "db:redo": "turbo db:redo",
+    "db:list": "turbo db:list",
     "lint": "turbo lint --continue",
     "lint:fix": "turbo lint:fix --continue",
     "format": "turbo format",

@@ -1,48 +1,105 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDependencies": [
+    "**/.env.*local"
+  ],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
     },
     "topo": {
-      "dependsOn": ["^topo"]
+      "dependsOn": [
+        "^topo"
+      ]
     },
     "format": {
-      "dependsOn": ["^topo"],
-      "outputs": ["node_modules/.cache/prettiercache"],
+      "dependsOn": [
+        "^topo"
+      ],
+      "outputs": [
+        "node_modules/.cache/prettiercache"
+      ],
       "outputMode": "errors-only"
     },
     "format:fix": {
-      "dependsOn": ["^topo"],
-      "outputs": ["node_modules/.cache/prettiercache"],
+      "dependsOn": [
+        "^topo"
+      ],
+      "outputs": [
+        "node_modules/.cache/prettiercache"
+      ],
       "outputMode": "errors-only"
     },
     "lint": {
-      "dependsOn": ["^topo"],
-      "outputs": ["node_modules/.cache/.eslintcache"],
+      "dependsOn": [
+        "^topo"
+      ],
+      "outputs": [
+        "node_modules/.cache/.eslintcache"
+      ],
       "outputMode": "errors-only"
     },
     "lint:fix": {
-      "dependsOn": ["^topo"],
-      "outputs": ["node_modules/.cache/.eslintcache"],
+      "dependsOn": [
+        "^topo"
+      ],
+      "outputs": [
+        "node_modules/.cache/.eslintcache"
+      ],
       "outputMode": "errors-only"
     },
     "typecheck": {
-      "dependsOn": ["^topo"],
-      "outputs": ["node_modules/.cache/tsbuildinfo.json"],
+      "dependsOn": [
+        "^topo"
+      ],
+      "outputs": [
+        "node_modules/.cache/tsbuildinfo.json"
+      ],
       "outputMode": "errors-only"
     },
     "dev": {
-      "dependsOn": ["^topo"],
+      "dependsOn": [
+        "^topo"
+      ],
       "persistent": true,
       "cache": false
     },
     "clean": {
-      "dependsOn": ["^topo"],
+      "dependsOn": [
+        "^topo"
+      ],
       "persistent": true,
       "cache": false
+    },
+    "db:push": {
+      "dependsOn": [
+        "^topo"
+      ],
+      "cache": false
+    },
+    "db:pop": {
+      "dependsOn": [
+        "^topo"
+      ],
+      "cache": false
+    },
+    "db:redo": {
+      "dependsOn": [
+        "^topo"
+      ],
+      "cache": false
+    },
+    "db:list": {
+      "dependsOn": [
+        "^topo"
+      ]
     }
   }
 }
