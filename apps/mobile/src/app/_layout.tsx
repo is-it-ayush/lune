@@ -20,10 +20,14 @@ import "~/styles/globals.css";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 SplashScreen.preventAutoHideAsync();
 
+const queryClient = new QueryClient();
+
 const Layout = () => {
+
   const [fontLoaded, fontError] = useFonts({
     PoppinsThin: require("../../assets/fonts/poppins/Poppins-Thin.ttf"),
     PoppinsExtraLight: require("../../assets/fonts/poppins/Poppins-ExtraLight.ttf"),
@@ -47,9 +51,11 @@ const Layout = () => {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="index" />
-    </Stack>
+    <QueryClientProvider client={queryClient}>
+      <Stack>
+        <Stack.Screen name="index" />
+      </Stack>
+    </QueryClientProvider>
   );
 };
 

@@ -1,0 +1,46 @@
+version: "3.9"
+
+# temporary env vars.
+services:
+  primary:
+    image: "bitnami/postgresql:latest"
+    environment:
+      POSTGRESQL_USERNAME: "primary"
+      POSTGRESQL_PASSWORD: "password"
+      POSTGRESQL_DATABASE: "lune"
+      POSTGRESQL_REPLICATION_MODE: "master"
+      POSTGRESQL_REPLICATION_USER: "replica"
+      POSTGRESQL_REPLICATION_PASSWORD: "password"
+      POSTGRESQL_SYNCHRONOUS_COMMIT_MODE: "on"
+      POSTGRESQL_NUM_SYNCHRONOUS_REPLICAS: "1"
+    volumes:
+      - ./docker/primary/data:/bitnami/postgresql
+    ports:
+      - 5432:5432
+    networks:
+      - backend
+    deploy:
+      restart_policy:
+        condition: on-failure
+  replica:
+    image: "bitnami/postgresql:latest"
+    depends_on:
+      - primary
+    environment:
+      POSTGRESQL_PASSWORD: "password"
+      POSTGRESQL_REPLICATION_MODE: "slave"
+      POSTGRESQL_REPLICATION_USER: "replica"
+      POSTGRESQL_REPLICATION_PASSWORD: "password"
+      POSTGRESQL_MASTER_HOST: "primary"
+      POSTGRESQL_MASTER_PORT_NUMBER: "5432"
+    ports:
+      - 5433:5432
+    networks:
+      - backend
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: on-failure
+
+networks:
+  backend:

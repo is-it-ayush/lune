@@ -50,5 +50,15 @@ module.exports = {
     favicon: "./assets/favicon.png",
     bundler: "metro",
   },
-  plugins: ["expo-router"],
+  plugins: [
+    "expo-router",
+    [
+      "expo-build-properties",
+      {
+        ios: {
+          flipper: true
+        }
+      }
+    ]
+  ],
 };

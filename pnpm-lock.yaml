@@ -15,8 +15,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       turbo:
-        specifier: ^1.11.2
-        version: 1.11.3
+        specifier: 1.11.4-canary.1
+        version: 1.11.4-canary.1
 
   apps/backend:
     dependencies:
@@ -81,6 +81,9 @@ importers:
       '@lune/backend':
         specifier: workspace:*
         version: link:../backend
+      '@tanstack/react-query':
+        specifier: ^5.17.9
+        version: 5.17.9(react@18.2.0)
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
@@ -90,6 +93,9 @@ importers:
       expo-auth-session:
         specifier: ~5.0.2
         version: 5.0.2(expo@49.0.21)
+      expo-build-properties:
+        specifier: ~0.8.3
+        version: 0.8.3(expo@49.0.21)
       expo-constants:
         specifier: ~14.4.2
         version: 14.4.2(expo@49.0.21)
@@ -2847,6 +2853,19 @@ packages:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
     dependencies:
       tslib: 2.6.2
+    dev: false
+
+  /@tanstack/query-core@5.17.9:
+    resolution: {integrity: sha512-8xcvpWIPaRMDNLMvG9ugcUJMgFK316ZsqkPPbsI+TMZsb10N9jk0B6XgPk4/kgWC2ziHyWR7n7wUhxmD0pChQw==}
+    dev: false
+
+  /@tanstack/react-query@5.17.9(react@18.2.0):
+    resolution: {integrity: sha512-M5E9gwUq1Stby/pdlYjBlL24euIVuGbWKIFCbtnQxSdXI4PgzjTSdXdV3QE6fc+itF+TUvX/JPTKIwq8yuBXcg==}
+    peerDependencies:
+      react: ^18.0.0
+    dependencies:
+      '@tanstack/query-core': 5.17.9
+      react: 18.2.0
     dev: false
 
   /@trysound/sax@0.2.0:
@@ -5876,6 +5895,16 @@ packages:
     transitivePeerDependencies:
       - expo
       - supports-color
+    dev: false
+
+  /expo-build-properties@0.8.3(expo@49.0.21):
+    resolution: {integrity: sha512-kEDDuAadHqJTkvCGK4fXYHVrePiJO1DjyW95AicmwuGwQvGJydYFbuoauf9ybAU+4UH4arhbce8gHI3ZpIj3Jw==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      ajv: 8.12.0
+      expo: 49.0.21(@babel/core@7.23.7)
+      semver: 7.5.4
     dev: false
 
   /expo-constants@14.4.2(expo@49.0.21):
@@ -11316,64 +11345,64 @@ packages:
       typescript: 5.3.3
     dev: true
 
-  /turbo-darwin-64@1.11.3:
-    resolution: {integrity: sha512-IsOOg2bVbIt3o/X8Ew9fbQp5t1hTHN3fGNQYrPQwMR2W1kIAC6RfbVD4A9OeibPGyEPUpwOH79hZ9ydFH5kifw==}
+  /turbo-darwin-64@1.11.4-canary.1:
+    resolution: {integrity: sha512-c68rkKmAiSJ/Atk7/v3axEYX5BwhZ9/EbfIaBf/gCcL7pT8LGJYeARxu7j0DzuxL9ZylI0+ObJ6AEp68+Dy7qw==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64@1.11.3:
-    resolution: {integrity: sha512-FsJL7k0SaPbJzI/KCnrf/fi3PgCDCjTliMc/kEFkuWVA6Httc3Q4lxyLIIinz69q6JTx8wzh6yznUMzJRI3+dg==}
+  /turbo-darwin-arm64@1.11.4-canary.1:
+    resolution: {integrity: sha512-heoNpxDFGqXJaysZSyg/3QdM20+8IHkbBUXxfzg867BgfDu/KNlKZ5IS2I5t9KB7UBzsErH8JlRbPF2OkOTkww==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64@1.11.3:
-    resolution: {integrity: sha512-SvW7pvTVRGsqtSkII5w+wriZXvxqkluw5FO/MNAdFw0qmoov+PZ237+37/NgArqE3zVn1GX9P6nUx9VO+xcQAg==}
+  /turbo-linux-64@1.11.4-canary.1:
+    resolution: {integrity: sha512-kSOVotWAsHad7/58UJ5Be5qPlKeggFxpQewoSOYol2jDShfVvwspLvce29Bv8nGA7vW4/KWcZvU80j3gNHNUWg==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64@1.11.3:
-    resolution: {integrity: sha512-YhUfBi1deB3m+3M55X458J6B7RsIS7UtM3P1z13cUIhF+pOt65BgnaSnkHLwETidmhRh8Dl3GelaQGrB3RdCDw==}
+  /turbo-linux-arm64@1.11.4-canary.1:
+    resolution: {integrity: sha512-1ggx3lkweXU+Z1l3ItDuzmwhd2pZi6W7YhgzGGl1kcGOlL23BNiVTqgxYMlkhpqsx0iQe8hK74O/ILtya9w8Aw==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64@1.11.3:
-    resolution: {integrity: sha512-s+vEnuM2TiZuAUUUpmBHDr6vnNbJgj+5JYfnYmVklYs16kXh+EppafYQOAkcRIMAh7GjV3pLq5/uGqc7seZeHA==}
+  /turbo-windows-64@1.11.4-canary.1:
+    resolution: {integrity: sha512-RkU3H77XQm6istDnCaT/eZB3U91aQI6QoTxVNMr+JnMXlQmsWf+DOhSce8tuTpAJ9v3Hk0LmTs9ae3hPgFBWsw==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64@1.11.3:
-    resolution: {integrity: sha512-ZR5z5Zpc7cASwfdRAV5yNScCZBsgGSbcwiA/u3farCacbPiXsfoWUkz28iyrx21/TRW0bi6dbsB2v17swa8bjw==}
+  /turbo-windows-arm64@1.11.4-canary.1:
+    resolution: {integrity: sha512-aVf+cPBbWTgeUdo0lwTNIZZIZJrLsx04v9wYbxibV95vVR5GVZdFh9UmrlgceAFxN0veNu+QjmeHtfhSNU+TnA==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo@1.11.3:
-    resolution: {integrity: sha512-RCJOUFcFMQNIGKSjC9YmA5yVP1qtDiBA0Lv9VIgrXraI5Da1liVvl3VJPsoDNIR9eFMyA/aagx1iyj6UWem5hA==}
+  /turbo@1.11.4-canary.1:
+    resolution: {integrity: sha512-NB3vYcZHM6Uzc4YrLtqiO1PUolf6LskRGGWVaLgcnry2JkNdcZdN3PLjXmHA0um7cvK4++aWRuiQW7OXGIIcYw==}
     hasBin: true
     optionalDependencies:
-      turbo-darwin-64: 1.11.3
-      turbo-darwin-arm64: 1.11.3
-      turbo-linux-64: 1.11.3
-      turbo-linux-arm64: 1.11.3
-      turbo-windows-64: 1.11.3
-      turbo-windows-arm64: 1.11.3
+      turbo-darwin-64: 1.11.4-canary.1
+      turbo-darwin-arm64: 1.11.4-canary.1
+      turbo-linux-64: 1.11.4-canary.1
+      turbo-linux-arm64: 1.11.4-canary.1
+      turbo-windows-64: 1.11.4-canary.1
+      turbo-windows-arm64: 1.11.4-canary.1
     dev: true
 
   /type-check@0.4.0:

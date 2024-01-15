@@ -16,11 +16,18 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import { useQuery } from "@tanstack/react-query";
 import { StatusBar } from "expo-status-bar";
 import { View, Image } from "react-native";
 import { StyledText } from "~/components/StyledText";
 
 export default function App() {
+  const helloQuery = useQuery({
+    queryKey: ['lune.hello'],
+    queryFn: () => fetch("http://192.168.0.140:3000/health").then((res) => res.json()),
+  });
+  console.log(JSON.stringify(helloQuery));
+
   return (
     <View className="flex-1 justify-center items-center">
       <Image
