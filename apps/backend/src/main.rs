@@ -25,6 +25,7 @@ use diesel::r2d2::{ConnectionManager, Pool};
 use dotenv::dotenv;
 use hyper::{Body, Request, Response, Server};
 use routerify::{Middleware, Router, RouterService};
+use serde_json::json;
 use std::net::SocketAddr;
 use std::sync::{Arc, Mutex};
 
@@ -60,7 +61,7 @@ impl RequestState {
 #[tokio::main]
 async fn main() -> Result<(), AppError> {
     dotenv().ok();
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
 
     // create default state.
     let db_pool = get_connection_pool()?;
@@ -96,5 +97,11 @@ pub fn get_root_router(state: RequestState) -> Result<Router<Body, AppError>, Ap
 
 /// The only exposed endpoint other than /api group. It's use is for healthcheck.
 async fn health_handler(_: Request<Body>) -> Result<Response<Body>, AppError> {
-    Ok(Response::new(Body::empty()))
+    Ok(Response::new(Body::from(
+        json!({
+            "status": "online",
+            "date": chrono::Utc::now()
+        })
+        .to_string(),
+    )))
 }
