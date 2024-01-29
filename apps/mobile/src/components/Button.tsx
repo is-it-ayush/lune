@@ -20,61 +20,61 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /// The code is licensed under MIT License.
 /// https://github.com/mrzachnugent/react-native-reusables
 
-import { cva, type VariantProps } from 'class-variance-authority';
-import * as React from 'react';
-import { useColorScheme } from 'nativewind';
-import { Platform, Pressable, Text, View } from 'react-native';
-import { cn, isTextChildren } from '~/lib/utils';
-import * as Slot from '~/lib/rn-primitives/slot/slot-native';
+import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
+import { useColorScheme } from "nativewind";
+import { Platform, Pressable, Text, View } from "react-native";
+import { cn, isTextChildren } from "~/lib/utils";
+import * as Slot from "~/lib/rn-primitives/slot/slot-native";
 
 const buttonVariants = cva(
-  'flex-row items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
+  "flex-row items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
-        default: 'bg-primary',
-        destructive: 'bg-destructive',
-        outline: 'border border-input bg-background',
-        secondary: 'bg-secondary',
-        ghost: '',
-        link: '',
+        default: "bg-primary",
+        destructive: "bg-destructive",
+        outline: "border border-input bg-background",
+        secondary: "bg-secondary",
+        ghost: "",
+        link: "",
       },
       size: {
-        default: 'px-4 py-2 native:px-6 native:py-3.5',
-        sm: 'px-3 py-1 native:py-2',
-        lg: 'px-8 py-1.5 native:py-4',
+        default: "px-4 py-2 native:px-6 native:py-3.5",
+        sm: "px-3 py-1 native:py-2",
+        lg: "px-8 py-1.5 native:py-4",
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'default',
+      variant: "default",
+      size: "default",
     },
-  }
+  },
 );
 
-const buttonTextVariants = cva('font-medium font-poppins-400', {
+const buttonTextVariants = cva("font-medium font-poppins-400", {
   variants: {
     variant: {
-      default: 'text-primary-foreground',
-      destructive: 'text-destructive-foreground',
-      outline: 'text-foreground',
-      secondary: 'text-secondary-foreground',
-      ghost: 'text-foreground',
-      link: 'text-primary underline',
+      default: "text-primary-foreground",
+      destructive: "text-destructive-foreground",
+      outline: "text-foreground",
+      secondary: "text-secondary-foreground",
+      ghost: "text-foreground",
+      link: "text-primary underline",
     },
   },
   defaultVariants: {
-    variant: 'default',
+    variant: "default",
   },
 });
 
 const rippleColor = (isThemeDark: boolean) => {
-  const secondary = isThemeDark ? 'hsl(240 4% 16%)' : 'hsl(240 5% 96%)';
+  const secondary = isThemeDark ? "hsl(240 4% 16%)" : "hsl(240 5% 96%)";
   return {
-    default: isThemeDark ? '#d4d4d8' : '#3f3f46',
-    destructive: isThemeDark ? '#b91c1c' : '#f87171',
+    default: isThemeDark ? "#d4d4d8" : "#3f3f46",
+    destructive: isThemeDark ? "#b91c1c" : "#f87171",
     outline: secondary,
-    secondary: isThemeDark ? '#3f3f46' : '#e4e4e7',
+    secondary: isThemeDark ? "#3f3f46" : "#e4e4e7",
     ghost: secondary,
     link: secondary,
   };
@@ -92,22 +92,22 @@ const Button = React.forwardRef<
     {
       className,
       textClass,
-      variant = 'default',
+      variant = "default",
       size,
       children,
       androidRootClass,
       disabled,
       ...props
     },
-    ref
+    ref,
   ) => {
     const { colorScheme } = useColorScheme();
-    const Root = Platform.OS === 'android' ? View : Slot.Pressable;
+    const Root = Platform.OS === "android" ? View : Slot.Pressable;
     return (
       <Root
         className={cn(
-          Platform.OS === 'android' && 'flex-row rounded-md overflow-hidden',
-          Platform.OS === 'android' && androidRootClass
+          Platform.OS === "android" && "flex-row rounded-md overflow-hidden",
+          Platform.OS === "android" && androidRootClass,
         )}
       >
         <Pressable
@@ -117,13 +117,13 @@ const Button = React.forwardRef<
               size,
               className: cn(
                 className,
-                disabled && 'opacity-50 web:cursor-default'
+                disabled && "opacity-50 web:cursor-default",
               ),
-            })
+            }),
           )}
           ref={ref}
           android_ripple={{
-            color: rippleColor(colorScheme === 'dark')[variant as 'default'],
+            color: rippleColor(colorScheme === "dark")[variant as "default"],
             borderless: false,
           }}
           disabled={disabled}
@@ -133,21 +133,21 @@ const Button = React.forwardRef<
             ? ({ pressed, hovered }) => (
                 <Text
                   className={cn(
-                    hovered && 'opacity-90',
-                    pressed && 'opacity-70',
+                    hovered && "opacity-90",
+                    pressed && "opacity-70",
                     buttonTextVariants({ variant, className: textClass }),
-                    disabled && 'opacity-100'
+                    disabled && "opacity-100",
                   )}
                 >
-                  {children as string | string[]}
+                  {children as string[] | string}
                 </Text>
               )
             : children}
         </Pressable>
       </Root>
     );
-  }
+  },
 );
-Button.displayName = 'Button';
+Button.displayName = "Button";
 
 export { Button, buttonTextVariants, buttonVariants };

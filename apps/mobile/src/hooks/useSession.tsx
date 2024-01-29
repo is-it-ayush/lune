@@ -28,7 +28,7 @@ export type Credentials = {
   email: string;
   password: string;
 };
-type SessionMethod = "Google" | "Email";
+type SessionMethod = "Email" | "Google";
 type SessionState = {
   signIn: (credentials: Credentials, method: SessionMethod) => Promise<void>;
   signOut: () => Promise<void>;
@@ -40,7 +40,10 @@ const SessionContext = createContext<SessionState | null>(null);
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
   const [sessionUser, setSessionUser] = useState<SessionUser | null>(null);
 
-  async function signIn(credentials: Credentials, method: SessionMethod): Promise<void> {
+  async function signIn(
+    credentials: Credentials,
+    method: SessionMethod,
+  ): Promise<void> {
     switch (method) {
       case "Google":
         break;
@@ -48,27 +51,31 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
         break;
       default:
         break;
-    };
+    }
   }
   async function signOut(): Promise<void> {
     setSessionUser(null);
-  };
+  }
 
   return (
-    <SessionContext.Provider value={{
-      signIn: signIn,
-      signOut: signOut,
-      sessionUser: sessionUser
-    }}>
+    <SessionContext.Provider
+      value={{
+        signIn,
+        signOut,
+        sessionUser,
+      }}
+    >
       {children}
     </SessionContext.Provider>
   );
-}
+};
 
 export const useSession = (): SessionState => {
   const authState = useContext(SessionContext);
   if (!authState) {
-    throw new Error("SessionContext was null. Are you sure you've wrapped your application with <SessionProvider />?");
+    throw new Error(
+      "SessionContext was null. Are you sure you've wrapped your application with <SessionProvider />?",
+    );
   }
   return authState;
-}
+};

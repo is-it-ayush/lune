@@ -20,10 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /// The code is licensed under MIT License.
 /// https://github.com/mrzachnugent/react-native-reusables
 
-import React from 'react';
-import { TextInput } from 'react-native';
+import React from "react";
+import { TextInput } from "react-native";
 
-import { cn } from '~/lib/utils';
+import { cn } from "~/lib/utils";
 
 const Input = React.forwardRef<
   React.ElementRef<typeof TextInput>,
@@ -33,15 +33,15 @@ const Input = React.forwardRef<
     <TextInput
       ref={ref}
       className={cn(
-        'font-poppins-400 rounded-md border border-input bg-background px-3 h-12 leading-[1.25] text-foreground items-center placeholder:text-muted-foreground disabled:opacity-50',
-        className
+        "font-poppins-400 rounded-md border border-input bg-background px-3 h-12 leading-[1.25] text-foreground items-center placeholder:text-muted-foreground disabled:opacity-50",
+        className,
       )}
-      placeholderClassName={cn('text-muted-foreground', placeholderClassName)}
+      placeholderClassName={cn("text-muted-foreground", placeholderClassName)}
       {...props}
     />
   );
 });
 
-Input.displayName = 'Input';
+Input.displayName = "Input";
 
 export { Input };

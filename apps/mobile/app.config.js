@@ -56,9 +56,9 @@ module.exports = {
       "expo-build-properties",
       {
         ios: {
-          flipper: true
-        }
-      }
-    ]
+          flipper: true,
+        },
+      },
+    ],
   ],
 };

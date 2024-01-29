@@ -25,7 +25,6 @@ import { SessionProvider } from "~/hooks/useSession";
 const queryClient = new QueryClient();
 
 const Layout = () => {
-
   const [fontLoaded, fontError] = useFonts({
     PoppinsThin: require("../../assets/fonts/poppins/Poppins-Thin.ttf"),
     PoppinsExtraLight: require("../../assets/fonts/poppins/Poppins-ExtraLight.ttf"),
@@ -41,7 +40,6 @@ const Layout = () => {
   if (!fontLoaded && !fontError) {
     return null;
   }
-
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -7,6 +7,7 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'unicorn/filename-case': 'off',
 
+    '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/consistent-type-imports': 'warn',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-empty-function': 'off',

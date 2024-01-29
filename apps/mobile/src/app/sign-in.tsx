@@ -16,17 +16,17 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { useState } from "react"
-import { View } from "react-native"
+import { useState } from "react";
+import { View } from "react-native";
 import { Button } from "~/components/Button";
 import { Input } from "~/components/Input";
-import { Text } from "~/components/Text"
+import { Text } from "~/components/Text";
 import type { Credentials } from "~/hooks/useSession";
 
 const SignInPage = () => {
   const [userForm, setUserForm] = useState<Credentials>({
     email: "",
-    password: ""
+    password: "",
   });
 
   return (
@@ -47,12 +47,17 @@ const SignInPage = () => {
             setUserForm((prev) => ({ ...prev, password: updatedPassword }));
           }}
         />
-        <Button className="w-full" onPress={() => {
-          // todo: aaaugh
-        }}>Sign In</Button>
+        <Button
+          className="w-full"
+          onPress={() => {
+            // todo: aaaugh
+          }}
+        >
+          Sign In
+        </Button>
       </View>
     </View>
-  )
-}
+  );
+};
 
 export default SignInPage;

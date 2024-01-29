@@ -23,8 +23,9 @@ import { Text } from "~/components/Text";
 
 export default function App() {
   const helloQuery = useQuery({
-    queryKey: ['lune.hello'],
-    queryFn: () => fetch("http://192.168.0.140:3000/health").then((res) => res.json()),
+    queryKey: ["lune.hello"],
+    queryFn: () =>
+      fetch("http://192.168.0.140:3000/health").then((res) => res.json()),
   });
   console.log(JSON.stringify(helloQuery));
 

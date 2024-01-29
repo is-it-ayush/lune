@@ -19,11 +19,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { clsx } from "clsx";
 import { Text as NativeText } from "react-native";
 
-interface TextProps extends React.ComponentProps<typeof NativeText> { }
+interface TextProps extends React.ComponentProps<typeof NativeText> {}
 
 export const Text = (props: TextProps) => {
   return (
-    <NativeText {...props} className={clsx("font-poppins-400", props.className)}>
+    <NativeText
+      {...props}
+      className={clsx("font-poppins-400", props.className)}
+    >
       {props.children}
     </NativeText>
   );
