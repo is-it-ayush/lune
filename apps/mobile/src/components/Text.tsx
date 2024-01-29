@@ -16,13 +16,18 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-module.exports = function (api) {
-  api.cache(true);
-  return {
-    presets: [
-      ["babel-preset-expo", { jsxImportSource: "nativewind" }],
-      "nativewind/babel",
-    ],
-    plugins: ["expo-router/babel", "react-native-reanimated/plugin"],
-  };
+import { clsx } from "clsx";
+import { Text as NativeText } from "react-native";
+
+interface TextProps extends React.ComponentProps<typeof NativeText> {}
+
+export const Text = (props: TextProps) => {
+  return (
+    <NativeText
+      {...props}
+      className={clsx("font-poppins-400", props.className)}
+    >
+      {props.children}
+    </NativeText>
+  );
 };

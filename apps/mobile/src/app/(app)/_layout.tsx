@@ -16,13 +16,21 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-module.exports = function (api) {
-  api.cache(true);
-  return {
-    presets: [
-      ["babel-preset-expo", { jsxImportSource: "nativewind" }],
-      "nativewind/babel",
-    ],
-    plugins: ["expo-router/babel", "react-native-reanimated/plugin"],
-  };
+import { Tabs, Redirect } from "expo-router";
+import { useSession } from "~/hooks/useSession";
+
+const Layout = () => {
+  const authState = useSession();
+
+  if (!authState.sessionUser) {
+    return <Redirect href="/sign-in" />;
+  }
+
+  return (
+    <Tabs>
+      <Tabs.Screen name="index" />
+    </Tabs>
+  );
 };
+
+export default Layout;

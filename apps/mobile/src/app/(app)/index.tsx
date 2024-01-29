@@ -18,26 +18,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { useQuery } from "@tanstack/react-query";
 import { StatusBar } from "expo-status-bar";
-import { View, Image } from "react-native";
-import { StyledText } from "~/components/StyledText";
+import { View } from "react-native";
+import { Text } from "~/components/Text";
 
 export default function App() {
   const helloQuery = useQuery({
-    queryKey: ['lune.hello'],
-    queryFn: () => fetch("http://192.168.0.140:3000/health").then((res) => res.json()),
+    queryKey: ["lune.hello"],
+    queryFn: () =>
+      fetch("http://192.168.0.140:3000/health").then((res) => res.json()),
   });
   console.log(JSON.stringify(helloQuery));
 
   return (
     <View className="flex-1 justify-center items-center">
-      <Image
-        width={300}
-        height={400}
-        source={{
-          uri: "https://media.tenor.com/i829SwWp6pAAAAAM/cat-angry.gif",
-        }}
-      />
-      <StyledText className="text-amber-500">blyat :3</StyledText>
+      <Text className="text-base">It ain't much but it's honest work.</Text>
       <StatusBar style="auto" />
     </View>
   );

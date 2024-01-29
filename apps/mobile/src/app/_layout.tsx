@@ -17,17 +17,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import "~/styles/globals.css";
-import { SplashScreen, Stack } from "expo-router";
-import { useEffect } from "react";
+import { Slot } from "expo-router";
 import { useFonts } from "expo-font";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-SplashScreen.preventAutoHideAsync();
+import { SessionProvider } from "~/hooks/useSession";
 
 const queryClient = new QueryClient();
 
 const Layout = () => {
-
   const [fontLoaded, fontError] = useFonts({
     PoppinsThin: require("../../assets/fonts/poppins/Poppins-Thin.ttf"),
     PoppinsExtraLight: require("../../assets/fonts/poppins/Poppins-ExtraLight.ttf"),
@@ -40,21 +37,15 @@ const Layout = () => {
     PoppinsBlack: require("../../assets/fonts/poppins/Poppins-Black.ttf"),
   });
 
-  useEffect(() => {
-    if (fontLoaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontLoaded, fontError]);
-
   if (!fontLoaded && !fontError) {
     return null;
   }
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Stack>
-        <Stack.Screen name="index" />
-      </Stack>
+      <SessionProvider>
+        <Slot />
+      </SessionProvider>
     </QueryClientProvider>
   );
 };
